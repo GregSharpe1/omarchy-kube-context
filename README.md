@@ -1,6 +1,6 @@
 # Kubernetes Context for Omarchy
 
-Show the current Kubernetes context on the right side of your Omarchy bar. The widget reads local kubeconfig every five seconds. Hover over it to see the full context name if the bar label is shortened.
+Show and switch the current Kubernetes context from the right side of your Omarchy bar. Click the widget and choose a context. You can also use the arrow keys and Enter. The picker marks the current context, and the bar updates after a switch. Hover over the bar label to see the full context name.
 
 ## Requirements
 
@@ -14,7 +14,7 @@ Show the current Kubernetes context on the right side of your Omarchy bar. The w
 omarchy plugin add https://github.com/GregSharpe1/omarchy-kube-context.git --enable
 ```
 
-The widget uses the desktop session's `KUBECONFIG` or the standard `~/.kube/config`. It reads only the selected context name for display. The check runs locally and leaves the kubeconfig untouched.
+The widget uses the desktop session's `KUBECONFIG` or the standard `~/.kube/config`. It reads context names from local kubeconfig every five seconds. Choosing a context runs `kubectl config use-context` to set `current-context` in that configuration. These commands run locally without contacting a cluster. A terminal using a different `KUBECONFIG` will have its own default.
 
 If you keep your kubeconfig at a custom path, you can configure a fallback for when the desktop session has no `KUBECONFIG` and the standard path is absent.
 

@@ -7,6 +7,21 @@ if [[ -z ${KUBECONFIG:-} && ! -e "$HOME/.kube/config" && ! -L "$HOME/.kube/confi
   args=(--kubeconfig "$fallback")
 fi
 
-# Read only the selected name from local configuration. Bound the execution
-# time and output before passing anything to the shell UI.
-timeout --kill-after=1s 3s kubectl "${args[@]}" config view -o 'jsonpath={.current-context}' 2>/dev/null | head -c 1025
+case "${2:-current}" in
+  current)
+    # Keep the one-name output used by older, already-loaded bar widgets.
+    timeout --kill-after=1s 3s kubectl "${args[@]}" config view \
+      -o 'jsonpath={.current-context}' 2>/dev/null | head -c 1025
+    ;;
+  list)
+    # Return only context names. Read one extra byte to detect truncation.
+    timeout --kill-after=1s 3s kubectl "${args[@]}" config view \
+      -o 'jsonpath-as-json={.current-context}{.contexts[*].name}' 2>/dev/null | head -c 262145
+    ;;
+  use)
+    timeout --kill-after=1s 5s kubectl "${args[@]}" config use-context -- "$3" >/dev/null 2>&1
+    ;;
+  *)
+    exit 2
+    ;;
+esac

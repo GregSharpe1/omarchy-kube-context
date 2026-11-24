@@ -2,9 +2,9 @@
   "schemaVersion": 1,
   "id": "io.github.gregsharpe1.kube-context",
   "name": "Kubernetes Context",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "GregSharpe1",
-  "description": "Shows the current kubeconfig context",
+  "description": "Shows and switches the current kubeconfig context",
   "kinds": [
     "bar-widget"
   ],
@@ -13,7 +13,7 @@
   },
   "barWidget": {
     "displayName": "Kubernetes Context",
-    "description": "Shows the current kubeconfig context",
+    "description": "Shows and switches the current kubeconfig context",
     "category": "System",
     "defaultSection": "right",
     "allowMultiple": false

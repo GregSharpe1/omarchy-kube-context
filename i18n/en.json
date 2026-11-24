@@ -7,5 +7,10 @@
   "tooltip.context": "Kubernetes context: %1",
   "tooltip.loading": "Reading Kubernetes context",
   "tooltip.unset": "No Kubernetes context is selected",
-  "tooltip.error": "Could not read the Kubernetes context"
+  "tooltip.error": "Could not read the Kubernetes context",
+  "panel.title": "Kubernetes contexts",
+  "panel.current": "Current",
+  "panel.empty": "No contexts are configured",
+  "panel.switching": "Switching context…",
+  "panel.switchError": "Could not switch Kubernetes context"
 }
