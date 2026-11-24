@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.gregsharpe1.kube-context",
+  "name": "Kubernetes Context",
+  "version": "1.0.0",
+  "author": "GregSharpe1",
+  "description": "Shows the current kubeconfig context",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Kubernetes Context",
+    "description": "Shows the current kubeconfig context",
+    "category": "System",
+    "defaultSection": "right",
+    "allowMultiple": false
+  }
+}

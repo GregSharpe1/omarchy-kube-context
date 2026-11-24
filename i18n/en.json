@@ -1,0 +1,11 @@
+{
+  "bar.label": "K8s · %1",
+  "bar.vertical": "K8s",
+  "bar.loading": "…",
+  "bar.unset": "No context",
+  "bar.error": "Unavailable",
+  "tooltip.context": "Kubernetes context: %1",
+  "tooltip.loading": "Reading Kubernetes context",
+  "tooltip.unset": "No Kubernetes context is selected",
+  "tooltip.error": "Could not read the Kubernetes context"
+}

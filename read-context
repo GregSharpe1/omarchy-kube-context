@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -o pipefail
+
+fallback=${1:-}
+args=()
+if [[ -z ${KUBECONFIG:-} && ! -e "$HOME/.kube/config" && ! -L "$HOME/.kube/config" && -f "$fallback" ]]; then
+  args=(--kubeconfig "$fallback")
+fi
+
+# Read only the selected name from local configuration. Bound the execution
+# time and output before passing anything to the shell UI.
+timeout --kill-after=1s 3s kubectl "${args[@]}" config view -o 'jsonpath={.current-context}' 2>/dev/null | head -c 1025
